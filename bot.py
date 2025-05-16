@@ -335,7 +335,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Start bot
 def main():
     keep_alive()
-    TOKEN ="7696720452:AAEP0cc00UvMliW1gkEtPerUYc4Ki3xCaQw"
+    TOKEN ="7926324917:AAHFaZrVub8NBbW9ruzoJRfJW1YUV-yETaI"
     app = Application.builder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
