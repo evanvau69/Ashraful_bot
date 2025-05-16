@@ -47,7 +47,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/show_messages\n"
         "/delete_number\n"
         "/my_numbers\n"
-        " 🛂SUPPORT : @Fuck_Method_BoT "
+        " 🛂SUPPORT : @hunter_buy_bot "
     )
 
 # Admin permission grant
