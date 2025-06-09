@@ -25,14 +25,14 @@ def permission_required(func):
         expire_time = user_permissions.get(user_id, 0)
         if time.time() > expire_time:
             keyboard = [
-                [InlineKeyboardButton("30 Minute - $FREE", callback_data="PLAN:30m")],
-                [InlineKeyboardButton("1 Day - $2", callback_data="PLAN:1d")],
-                [InlineKeyboardButton("7 Day - $10", callback_data="PLAN:7d")],
-                [InlineKeyboardButton("15 Day - $15", callback_data="PLAN:15d")],
-                [InlineKeyboardButton("30 Day - $20", callback_data="PLAN:30d")],
+                [InlineKeyboardButton("7 Days - $FREE", callback_data="PLAN:7 d")],
+                [InlineKeyboardButton("", callback_data="")],
+                [InlineKeyboardButton("", callback_data="")],
+                [InlineKeyboardButton("", callback_data="")],
+                [InlineKeyboardButton("", callback_data="")],
             ]
             await (update.message or update.callback_query).reply_text(
-                "Bot এর Subscription কিনার জন্য নিচের বাটনে ক্লিক করুন:",
+                "Bot এর Subscription নেওয়ার জন্য নিচের বাটনে ক্লিক করুন:",
                 reply_markup=InlineKeyboardMarkup(keyboard)
             )
             return
@@ -309,7 +309,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         plan = data.split(":")[1]
         username = f"@{query.from_user.username}" if query.from_user.username else "N/A"
         prices = {
-            "30Minute": (1800, "30 Minute", "$FREE"),
+            "7 Day": (604800, "7 Day", "$FREE"),
             "1d": (86400, "1 Day", "$2"),
             "7d": (604800, "7 Day", "$10"),
             "15d": (1296000, "15 Day", "$15"),
