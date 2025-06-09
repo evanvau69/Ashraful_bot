@@ -25,7 +25,7 @@ def permission_required(func):
         expire_time = user_permissions.get(user_id, 0)
         if time.time() > expire_time:
             keyboard = [
-                [InlineKeyboardButton("7 Days - $FREE", callback_data="PLAN:7 d")],
+                [InlineKeyboardButton("7 Days - $FREE", callback_data="PLAN:7d")],
                 [InlineKeyboardButton("", callback_data="")],
                 [InlineKeyboardButton("", callback_data="")],
                 [InlineKeyboardButton("", callback_data="")],
@@ -315,13 +315,13 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "15d": (1296000, "15 Day", "$15"),
             "30d": (2592000, "30 Day", "$20")
         }
-        if plan == "30m":
+        if plan == "7d":
             if user_id in user_used_free_plan:
                 await query.edit_message_text("আপনি ইতিমধ্যেই ফ্রি প্লান ব্যবহার করেছেন।দয়া করে অন্য Plan Choose করুন")
                 return
             user_used_free_plan.add(user_id)
-            user_permissions[user_id] = time.time() + 1800
-            await query.edit_message_text("✅ আপনি ৩০ মিনিটের জন্য ফ্রি প্লান একটিভ করেছেন। মনে রাখবেন এটি শুধু একবারের জন্যই প্রযোজ্য 🟢🔵 ")
+            user_permissions[user_id] = time.time() + 604800
+            await query.edit_message_text("✅ আপনি 7 দিনের জন্য ফ্রি প্লান একটিভ করেছেন। মনে রাখবেন এটি শুধু একবারের জন্যই প্রযোজ্য 🟢🔵 ")
             return
         if plan in prices:
             _, label, cost = prices[plan]
