@@ -25,14 +25,14 @@ def permission_required(func):
         expire_time = user_permissions.get(user_id, 0)
         if time.time() > expire_time:
             keyboard = [
-                [InlineKeyboardButton("7 Days - $FREE", callback_data="PLAN:7d")],
-                [InlineKeyboardButton("", callback_data="")],
-                [InlineKeyboardButton("", callback_data="")],
-                [InlineKeyboardButton("", callback_data="")],
-                [InlineKeyboardButton("", callback_data="")],
+                [InlineKeyboardButton("7 Day - $FREE", callback_data="PLAN:7d")],
+                [InlineKeyboardButton("1 Day - $2", callback_data="PLAN:1d")],
+                [InlineKeyboardButton("7 Day - $10", callback_data="PLAN:7d")],
+                [InlineKeyboardButton("15 Day - $15", callback_data="PLAN:15d")],
+                [InlineKeyboardButton("30 Day - $20", callback_data="PLAN:30d")],
             ]
             await (update.message or update.callback_query).reply_text(
-                "Bot এর Subscription নেওয়ার জন্য নিচের বাটনে ক্লিক করুন:",
+                "Bot এর Subscription কিনার জন্য নিচের বাটনে ক্লিক করুন:",
                 reply_markup=InlineKeyboardMarkup(keyboard)
             )
             return
@@ -41,7 +41,7 @@ def permission_required(func):
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "স্বাগতম 🌸「* 𝗨𝗦𝗔 メ 𝗡𝗨𝗠𝗕𝗘𝗥 𝗕𝗢𝗧  」-এ 🤍 কাজ করার জন্য নিচের কমান্ড গুলো ব্যবহার করতে পরবেন!\n\n"
+        "স্বাগতম 🥶「* 𝗨𝗦𝗔 メ 𝗡𝗨𝗠𝗕𝗘𝗥 𝗕𝗢𝗧  」-এ 🤍 কাজ করার জন্য নিচের কমান্ড গুলো ব্যবহার করতে পরবেন!\n\n"
         "/login <SID> <TOKEN>\n"
         "/buy_number (Area Code)  \n"
         "/show_messages\n"
@@ -309,7 +309,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         plan = data.split(":")[1]
         username = f"@{query.from_user.username}" if query.from_user.username else "N/A"
         prices = {
-            "7 Day": (604800, "7 Day", "$FREE"),
+            "7d": (1800, "7 Day", "$FREE"),
             "1d": (86400, "1 Day", "$2"),
             "7d": (604800, "7 Day", "$10"),
             "15d": (1296000, "15 Day", "$15"),
@@ -321,7 +321,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 return
             user_used_free_plan.add(user_id)
             user_permissions[user_id] = time.time() + 604800
-            await query.edit_message_text("✅ আপনি 7 দিনের জন্য ফ্রি প্লান একটিভ করেছেন। মনে রাখবেন এটি শুধু একবারের জন্যই প্রযোজ্য 🟢🔵 ")
+            await query.edit_message_text("✅ আপনি ৩০ মিনিটের জন্য ফ্রি প্লান একটিভ করেছেন। মনে রাখবেন এটি শুধু একবারের জন্যই প্রযোজ্য 🟢🔵 ")
             return
         if plan in prices:
             _, label, cost = prices[plan]
