@@ -114,7 +114,7 @@ async def handle_plan_choice(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     plan = PLANS[choice]
     text = f"Please send ${plan['price']} to Binance Pay ID:\n"
-    text += f"\nপেমেন্ট করে প্রমান হিসাবে Admin এর কাছে স্কিনশর্ট অথবা transaction ID দিন @Mr_Evan3490"
+    text += f"\nপেমেন্ট করে প্রমান হিসাবে Admin এর কাছে স্কিনশর্ট অথবা transaction ID দিন @Mr_Asraful_7"
     text += f"\n\nYour payment details:\n"
     text += f"❄️ Name : {user.first_name}\n🆔 User ID: {user.id}\n👤 Username: @{user.username}\n📋 Plan: {plan['label']}\n💰 Amount: ${plan['price']}"
 
