@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 # Subscription Plans
 PLANS = {
-    "free_1h": {"label": "🎉 1 Hour - Free 🌸", "duration": 1, "price": 0},
+    "free_1h": {"label": "🕒 1 Hour - Free 🌸", "duration": 1, "price": 0},
     "1d": {"label": "🔴 1 Day - 2$", "duration": 24, "price": 2},
     "7d": {"label": "🟠 7 Day - 10$", "duration": 24*7, "price": 10},
     "15d": {"label": "🟡 15 Day - 15$", "duration": 24*15, "price": 15},
